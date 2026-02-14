@@ -1,0 +1,1556 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>S Bala Prasanna — Anthropologist & Researcher</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Outfit:wght@300;400;500;600;700&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #FAF7F2;
+    --bg-warm: #F3EDE4;
+    --bg-card: #FFFFFF;
+    --text-primary: #1A1A1A;
+    --text-secondary: #5A5449;
+    --text-muted: #8A8279;
+    --accent: #8B5E3C;
+    --accent-light: #C49A6C;
+    --accent-dark: #5C3D28;
+    --accent-glow: rgba(139, 94, 60, 0.12);
+    --border: #E5DFD6;
+    --border-light: #EDE8E0;
+    --shadow-sm: 0 1px 3px rgba(26,26,26,0.04), 0 1px 2px rgba(26,26,26,0.03);
+    --shadow-md: 0 4px 16px rgba(26,26,26,0.06), 0 2px 6px rgba(26,26,26,0.04);
+    --shadow-lg: 0 12px 40px rgba(26,26,26,0.08), 0 4px 12px rgba(26,26,26,0.04);
+    --shadow-xl: 0 24px 64px rgba(26,26,26,0.1), 0 8px 20px rgba(26,26,26,0.05);
+    --radius: 12px;
+    --radius-lg: 20px;
+    --font-display: 'Cormorant Garamond', Georgia, serif;
+    --font-body: 'Outfit', system-ui, sans-serif;
+    --font-serif: 'Source Serif 4', Georgia, serif;
+    --transition: 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font-body);
+    background: var(--bg);
+    color: var(--text-primary);
+    line-height: 1.7;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  /* ===== GLOBAL TEXTURE ===== */
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 9999;
+  }
+
+  /* ===== NAVIGATION ===== */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 1000;
+    background: rgba(250, 247, 242, 0.85);
+    backdrop-filter: blur(20px) saturate(1.4);
+    -webkit-backdrop-filter: blur(20px) saturate(1.4);
+    border-bottom: 1px solid var(--border-light);
+    transition: var(--transition);
+  }
+  nav.scrolled {
+    box-shadow: var(--shadow-sm);
+  }
+  .nav-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 72px;
+  }
+  .nav-logo {
+    font-family: var(--font-display);
+    font-size: 1.55rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    letter-spacing: -0.02em;
+    cursor: pointer;
+    transition: var(--transition);
+  }
+  .nav-logo:hover { color: var(--accent); }
+  .nav-logo span { color: var(--accent); }
+  .nav-links {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+  .nav-link {
+    font-size: 0.88rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    text-decoration: none;
+    padding: 8px 20px;
+    border-radius: 100px;
+    transition: var(--transition);
+    cursor: pointer;
+    letter-spacing: 0.02em;
+    position: relative;
+  }
+  .nav-link:hover {
+    color: var(--accent);
+    background: var(--accent-glow);
+  }
+  .nav-link.active {
+    color: var(--accent-dark);
+    background: var(--accent-glow);
+    font-weight: 600;
+  }
+
+  /* Mobile hamburger */
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 8px;
+    z-index: 1001;
+  }
+  .hamburger span {
+    width: 24px; height: 2px;
+    background: var(--text-primary);
+    border-radius: 2px;
+    transition: var(--transition);
+  }
+
+  /* ===== PAGE CONTAINERS ===== */
+  .page { display: none; min-height: 100vh; padding-top: 72px; }
+  .page.active { display: block; }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px;
+  }
+
+  /* ===== HOME PAGE — HERO ===== */
+  .hero {
+    padding: 80px 0 60px;
+    position: relative;
+  }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    gap: 64px;
+    align-items: start;
+  }
+  .hero-photo-wrapper {
+    position: relative;
+  }
+  .hero-photo-frame {
+    position: relative;
+    width: 280px;
+    height: 340px;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+    border: 3px solid var(--border-light);
+  }
+  .hero-photo-frame::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, var(--accent-light) 0%, var(--bg-warm) 40%, var(--accent) 100%);
+    opacity: 0.15;
+    z-index: 1;
+  }
+  .photo-placeholder {
+    width: 100%; height: 100%;
+    background: linear-gradient(160deg, #D4C5B4 0%, #BBA998 50%, #A89080 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    position: relative;
+  }
+  .photo-placeholder svg {
+    width: 72px; height: 72px;
+    opacity: 0.35;
+    color: var(--bg);
+  }
+  .photo-placeholder span {
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.5);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+  .hero-photo-accent {
+    position: absolute;
+    top: -12px; left: -12px;
+    width: 80px; height: 80px;
+    border: 2px solid var(--accent-light);
+    border-radius: var(--radius);
+    opacity: 0.4;
+  }
+  .hero-photo-accent-2 {
+    position: absolute;
+    bottom: -16px; right: -16px;
+    width: 100px; height: 100px;
+    background: var(--accent-glow);
+    border-radius: 50%;
+    filter: blur(20px);
+  }
+
+  .hero-content { padding-top: 12px; }
+  .hero-greeting {
+    font-family: var(--font-body);
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    margin-bottom: 14px;
+  }
+  .hero-name {
+    font-family: var(--font-display);
+    font-size: 3.6rem;
+    font-weight: 600;
+    line-height: 1.08;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+    letter-spacing: -0.025em;
+  }
+  .hero-title {
+    font-family: var(--font-serif);
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: var(--text-secondary);
+    font-style: italic;
+    margin-bottom: 28px;
+  }
+  .hero-bio {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    line-height: 1.85;
+    max-width: 560px;
+    margin-bottom: 32px;
+  }
+  .hero-contact {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .contact-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    font-size: 0.82rem;
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: var(--transition);
+    font-weight: 500;
+  }
+  .contact-chip:hover {
+    border-color: var(--accent-light);
+    color: var(--accent-dark);
+    box-shadow: var(--shadow-sm);
+    transform: translateY(-1px);
+  }
+  .contact-chip svg {
+    width: 16px; height: 16px;
+    color: var(--accent);
+    flex-shrink: 0;
+  }
+
+  /* ===== SECTION STYLING ===== */
+  .section {
+    padding: 60px 0;
+  }
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 40px;
+  }
+  .section-icon {
+    width: 44px; height: 44px;
+    background: var(--accent-glow);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .section-icon svg {
+    width: 22px; height: 22px;
+    color: var(--accent);
+  }
+  .section-title {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    letter-spacing: -0.02em;
+  }
+  .section-line {
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* ===== EDUCATION CARDS ===== */
+  .edu-grid { display: flex; flex-direction: column; gap: 20px; }
+  .edu-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius);
+    padding: 28px 32px;
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+  }
+  .edu-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 4px; height: 100%;
+    background: linear-gradient(180deg, var(--accent), var(--accent-light));
+    border-radius: 0 4px 4px 0;
+    opacity: 0;
+    transition: var(--transition);
+  }
+  .edu-card:hover {
+    box-shadow: var(--shadow-md);
+    border-color: var(--accent-light);
+  }
+  .edu-card:hover::before { opacity: 1; }
+  .edu-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 6px;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .edu-institution {
+    font-weight: 600;
+    font-size: 1.02rem;
+    color: var(--text-primary);
+  }
+  .edu-location {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    font-weight: 500;
+    white-space: nowrap;
+  }
+  .edu-degree {
+    font-family: var(--font-serif);
+    font-style: italic;
+    color: var(--text-secondary);
+    font-size: 0.92rem;
+  }
+  .edu-date {
+    font-size: 0.82rem;
+    color: var(--accent);
+    font-weight: 500;
+    margin-top: 4px;
+  }
+  .edu-details {
+    margin-top: 10px;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+  }
+
+  /* ===== EXPERIENCE / PROJECT CARDS ===== */
+  .timeline { display: flex; flex-direction: column; gap: 24px; }
+  .timeline-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius);
+    padding: 32px;
+    transition: var(--transition);
+    position: relative;
+  }
+  .timeline-card:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+  }
+  .timeline-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 6px;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .timeline-title {
+    font-weight: 600;
+    font-size: 1.05rem;
+    color: var(--text-primary);
+    line-height: 1.4;
+    flex: 1;
+  }
+  .timeline-badge {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--accent);
+    background: var(--accent-glow);
+    padding: 4px 14px;
+    border-radius: 100px;
+    white-space: nowrap;
+    letter-spacing: 0.02em;
+  }
+  .timeline-sub {
+    font-family: var(--font-serif);
+    font-style: italic;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin-bottom: 16px;
+  }
+  .timeline-bullets {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .timeline-bullets li {
+    position: relative;
+    padding-left: 20px;
+    font-size: 0.88rem;
+    color: var(--text-secondary);
+    line-height: 1.75;
+  }
+  .timeline-bullets li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 10px;
+    width: 6px; height: 6px;
+    background: var(--accent-light);
+    border-radius: 50%;
+  }
+  .timeline-highlight {
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+
+  /* ===== SKILLS SECTION ===== */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+  .skill-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius);
+    padding: 28px;
+    transition: var(--transition);
+  }
+  .skill-card:hover {
+    box-shadow: var(--shadow-md);
+    border-color: var(--accent-light);
+  }
+  .skill-label {
+    font-weight: 600;
+    font-size: 0.85rem;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .skill-label svg { width: 18px; height: 18px; }
+  .skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .skill-tag {
+    font-size: 0.82rem;
+    padding: 6px 14px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    color: var(--text-secondary);
+    transition: var(--transition);
+  }
+  .skill-tag:hover {
+    background: var(--accent-glow);
+    border-color: var(--accent-light);
+    color: var(--accent-dark);
+  }
+
+  /* ===== BLOG PAGE ===== */
+  .blog-hero {
+    padding: 80px 0 40px;
+    text-align: center;
+  }
+  .blog-hero h1 {
+    font-family: var(--font-display);
+    font-size: 3rem;
+    font-weight: 600;
+    margin-bottom: 12px;
+    letter-spacing: -0.02em;
+  }
+  .blog-hero p {
+    font-family: var(--font-serif);
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    font-style: italic;
+  }
+  .blog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 28px;
+    padding-bottom: 80px;
+  }
+  .blog-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    transition: var(--transition);
+    cursor: pointer;
+  }
+  .blog-card:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-4px);
+  }
+  .blog-card-img {
+    height: 200px;
+    position: relative;
+    overflow: hidden;
+  }
+  .blog-card-img-inner {
+    width: 100%; height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-display);
+    font-size: 3rem;
+    font-weight: 300;
+    color: rgba(255,255,255,0.6);
+  }
+  .blog-card:nth-child(1) .blog-card-img { background: linear-gradient(135deg, #8B5E3C, #C49A6C); }
+  .blog-card:nth-child(2) .blog-card-img { background: linear-gradient(135deg, #5C6B4E, #8FA97A); }
+  .blog-card:nth-child(3) .blog-card-img { background: linear-gradient(135deg, #4E5C6B, #7A8FA9); }
+  .blog-card:nth-child(4) .blog-card-img { background: linear-gradient(135deg, #6B4E5C, #A97A8F); }
+  .blog-card:nth-child(5) .blog-card-img { background: linear-gradient(135deg, #6B5E4E, #A9967A); }
+  .blog-card:nth-child(6) .blog-card-img { background: linear-gradient(135deg, #4E6B63, #7AA99E); }
+  .blog-tag {
+    position: absolute;
+    top: 16px; left: 16px;
+    background: rgba(255,255,255,0.2);
+    backdrop-filter: blur(12px);
+    padding: 4px 14px;
+    border-radius: 100px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+  .blog-card-body { padding: 24px 28px 28px; }
+  .blog-card-date {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-bottom: 8px;
+    font-weight: 500;
+  }
+  .blog-card-title {
+    font-family: var(--font-display);
+    font-size: 1.35rem;
+    font-weight: 600;
+    line-height: 1.3;
+    margin-bottom: 10px;
+    color: var(--text-primary);
+  }
+  .blog-card-excerpt {
+    font-size: 0.87rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+  }
+  .blog-card-read {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 16px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--accent);
+    letter-spacing: 0.02em;
+  }
+  .blog-card-read svg { width: 16px; height: 16px; transition: var(--transition); }
+  .blog-card:hover .blog-card-read svg { transform: translateX(4px); }
+
+  .blog-empty-state {
+    text-align: center;
+    padding: 80px 20px;
+    color: var(--text-muted);
+  }
+  .blog-empty-state svg {
+    width: 64px; height: 64px;
+    color: var(--border);
+    margin-bottom: 20px;
+  }
+  .blog-empty-state h3 {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    margin-bottom: 8px;
+    color: var(--text-secondary);
+  }
+
+  /* ===== ABOUT PAGE ===== */
+  .about-hero {
+    padding: 80px 0 60px;
+  }
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: start;
+  }
+  .about-photo-large {
+    width: 100%;
+    aspect-ratio: 3/4;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+    border: 3px solid var(--border-light);
+    position: relative;
+  }
+  .about-photo-large .photo-placeholder {
+    height: 100%;
+  }
+  .about-content h1 {
+    font-family: var(--font-display);
+    font-size: 2.8rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+    letter-spacing: -0.02em;
+  }
+  .about-content .about-subtitle {
+    font-family: var(--font-serif);
+    font-size: 1.1rem;
+    color: var(--accent);
+    font-style: italic;
+    margin-bottom: 28px;
+  }
+  .about-content p {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    line-height: 1.9;
+    margin-bottom: 20px;
+  }
+  .about-content p strong { color: var(--text-primary); }
+
+  .about-section {
+    padding: 60px 0;
+  }
+  .about-values-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .value-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius);
+    padding: 32px;
+    text-align: center;
+    transition: var(--transition);
+  }
+  .value-card:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-3px);
+  }
+  .value-icon {
+    width: 56px; height: 56px;
+    background: var(--accent-glow);
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 18px;
+  }
+  .value-icon svg { width: 26px; height: 26px; color: var(--accent); }
+  .value-card h3 {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+  .value-card p {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+  }
+
+  /* ===== GALLERY ACCORDION ===== */
+  .gallery-page {
+    padding: 80px 0 60px;
+  }
+  .gallery-page-title {
+    font-family: var(--font-display);
+    font-size: 3rem;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 12px;
+    letter-spacing: -0.02em;
+  }
+  .gallery-page-subtitle {
+    font-family: var(--font-serif);
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    font-style: italic;
+    text-align: center;
+    margin-bottom: 48px;
+  }
+  .gallery-accordion {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .gallery-section {
+    border-bottom: 1px solid var(--border);
+  }
+  .gallery-section:first-child {
+    border-top: 1px solid var(--border);
+  }
+  .gallery-section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 8px;
+    cursor: pointer;
+    transition: var(--transition);
+    user-select: none;
+  }
+  .gallery-section-header:hover {
+    background: var(--accent-glow);
+  }
+  .gallery-section-title {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .gallery-section-title .gallery-count {
+    font-family: var(--font-body);
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    background: var(--bg-warm);
+    padding: 3px 10px;
+    border-radius: 100px;
+    letter-spacing: 0.04em;
+  }
+  .gallery-section-arrow {
+    width: 20px;
+    height: 20px;
+    color: var(--text-muted);
+    transition: transform 0.35s ease;
+    flex-shrink: 0;
+  }
+  .gallery-section.active .gallery-section-header {
+    padding-bottom: 16px;
+  }
+  .gallery-section.active .gallery-section-title {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+  .gallery-section.active .gallery-section-arrow {
+    transform: rotate(180deg);
+    color: var(--accent);
+  }
+  .gallery-section-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+  .gallery-section.active .gallery-section-content {
+    max-height: 2000px;
+  }
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    padding: 8px 0 32px;
+  }
+  .gallery-item {
+    aspect-ratio: 4/3;
+    border-radius: var(--radius);
+    overflow: hidden;
+    cursor: pointer;
+    position: relative;
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition);
+  }
+  .gallery-item:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-3px);
+  }
+  .gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+  .gallery-item:hover img {
+    transform: scale(1.05);
+  }
+  /* Lightbox */
+  .gallery-lightbox {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+    background: rgba(0,0,0,0.9);
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    cursor: zoom-out;
+  }
+  .gallery-lightbox.open {
+    display: flex;
+  }
+  .gallery-lightbox img {
+    max-width: 90vw;
+    max-height: 85vh;
+    object-fit: contain;
+    border-radius: var(--radius);
+    box-shadow: 0 0 60px rgba(0,0,0,0.5);
+  }
+  .gallery-lightbox-close {
+    position: absolute;
+    top: 24px;
+    right: 32px;
+    width: 40px;
+    height: 40px;
+    border: none;
+    background: rgba(255,255,255,0.1);
+    border-radius: 50%;
+    color: #fff;
+    font-size: 1.5rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+  }
+  .gallery-lightbox-close:hover {
+    background: rgba(255,255,255,0.25);
+  }
+
+  @media (max-width: 900px) {
+    .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+    .gallery-section.active .gallery-section-title { font-size: 1.5rem; }
+  }
+  @media (max-width: 640px) {
+    .gallery-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+    .gallery-page-title { font-size: 2.2rem; }
+    .gallery-section.active .gallery-section-title { font-size: 1.3rem; }
+  }
+
+  /* ===== FOOTER ===== */
+  footer {
+    background: var(--text-primary);
+    color: rgba(255,255,255,0.6);
+    padding: 48px 0;
+    margin-top: 40px;
+  }
+  .footer-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  .footer-name {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    color: rgba(255,255,255,0.85);
+    font-weight: 600;
+  }
+  .footer-links {
+    display: flex;
+    gap: 24px;
+  }
+  .footer-links a {
+    color: rgba(255,255,255,0.5);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: var(--transition);
+  }
+  .footer-links a:hover { color: var(--accent-light); }
+  .footer-copy {
+    font-size: 0.8rem;
+    width: 100%;
+    text-align: center;
+    margin-top: 24px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+  }
+
+  /* ===== ANIMATIONS ===== */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .stagger-1 { transition-delay: 0.05s; }
+  .stagger-2 { transition-delay: 0.1s; }
+  .stagger-3 { transition-delay: 0.15s; }
+  .stagger-4 { transition-delay: 0.2s; }
+  .stagger-5 { transition-delay: 0.25s; }
+  .stagger-6 { transition-delay: 0.3s; }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 900px) {
+    .hero-grid { grid-template-columns: 1fr; gap: 40px; }
+    .hero-photo-frame { margin: 0 auto; width: 240px; height: 300px; }
+    .hero-content { text-align: center; }
+    .hero-name { font-size: 2.6rem; }
+    .hero-bio { margin: 0 auto 32px; }
+    .hero-contact { justify-content: center; }
+    .skills-grid { grid-template-columns: 1fr; }
+    .about-grid { grid-template-columns: 1fr; gap: 40px; }
+    .about-values-grid { grid-template-columns: 1fr; }
+    .blog-grid { grid-template-columns: 1fr; }
+    .container { padding: 0 24px; }
+    .nav-inner { padding: 0 24px; }
+  }
+  @media (max-width: 640px) {
+    .nav-links { 
+      display: none;
+      position: fixed;
+      top: 72px; left: 0; right: 0;
+      background: rgba(250, 247, 242, 0.98);
+      backdrop-filter: blur(20px);
+      flex-direction: column;
+      padding: 20px;
+      border-bottom: 1px solid var(--border);
+      box-shadow: var(--shadow-md);
+    }
+    .nav-links.open { display: flex; }
+    .hamburger { display: flex; }
+    .hero-name { font-size: 2.2rem; }
+    .section-title { font-size: 1.6rem; }
+    .blog-hero h1 { font-size: 2.2rem; }
+    .about-content h1 { font-size: 2.2rem; }
+    .footer-inner { flex-direction: column; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== NAVIGATION ===== -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <div class="nav-logo" onclick="navigate('home')">S Bala <span>Prasanna</span></div>
+    <div class="hamburger" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </div>
+    <div class="nav-links" id="navLinks">
+      <a class="nav-link active" onclick="navigate('home')" data-page="home">Home</a>
+      <a class="nav-link" onclick="navigate('blog')" data-page="blog">Blog</a>
+      <a class="nav-link" onclick="navigate('about')" data-page="about">About Me</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ==================== HOME PAGE ==================== -->
+<div class="page active" id="page-home">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-grid">
+        <div class="hero-photo-wrapper fade-in">
+          <div class="hero-photo-accent"></div>
+          <div class="hero-photo-accent-2"></div>
+          <div class="hero-photo-frame">
+            <div class="photo-placeholder">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"><circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 1 0-16 0"/></svg>
+              <span>Your Photo</span>
+            </div>
+          </div>
+        </div>
+        <div class="hero-content">
+          <div class="hero-greeting fade-in stagger-1">Hello, I'm</div>
+          <h1 class="hero-name fade-in stagger-2">S Bala Prasanna</h1>
+          <p class="hero-title fade-in stagger-3">Anthropologist &amp; Researcher — University of Delhi</p>
+          <p class="hero-bio fade-in stagger-4">
+            Anthropologist with a passion for ethnographic research, medical pluralism, and community health systems. Currently pursuing a Master's in Anthropology at Miranda House, University of Delhi, with fieldwork experience across Himalayan and South Indian communities.
+          </p>
+          <div class="hero-contact fade-in stagger-5">
+            <a href="mailto:balaprasanna00@gmail.com" class="contact-chip">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+              balaprasanna00@gmail.com
+            </a>
+            <!-- <a href="tel:+919353617893" class="contact-chip">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              +91 9353617893
+            </a> -->
+            <span class="contact-chip">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+              Karol Bagh, Delhi
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header fade-in">
+        <div class="section-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 1 2 3 6 3s6-2 6-3v-5"/></svg>
+        </div>
+        <h2 class="section-title">Education</h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="edu-grid">
+        <div class="edu-card fade-in stagger-1">
+          <div class="edu-top">
+            <span class="edu-institution">Miranda House College, University of Delhi</span>
+            <span class="edu-location">New Delhi, India</span>
+          </div>
+          <div class="edu-degree">Masters in Science, Anthropology</div>
+           <!-- — CGPA 7.93</div> -->
+          <div class="edu-date">June 2025</div>
+          <div class="edu-details">Courses: Social Anthropology, Anthropology in Practice, Tribal India, Anthropology of India, Research Methods &amp; Techniques, Epidemiology &amp; Public Health, Medical Anthropology, Field Work &amp; Organizational Attachment.</div>
+        </div>
+        <div class="edu-card fade-in stagger-2">
+          <div class="edu-top">
+            <span class="edu-institution">Hansraj College, University of Delhi</span>
+            <span class="edu-location">New Delhi, India</span>
+          </div>
+          <div class="edu-degree">Bachelors in Science (Hons.), Anthropology</div>
+           <!-- — CGPA 8.45</div> -->
+          <div class="edu-date">May 2023</div>
+          <div class="edu-details">Member — Debsoc (English Debating Society) and Literature Society</div>
+        </div>
+        <!-- <div class="edu-card fade-in stagger-3">
+          <div class="edu-top">
+            <span class="edu-institution">Sri Chaitanya PUC</span>
+            <span class="edu-location">Mangalore, KA, India</span>
+          </div>
+          <div class="edu-degree">Class 12 | Physics, Chemistry, Biology, Mathematics, English, Sanskrit — 87.66%</div>
+          <div class="edu-date">June 2020</div>
+        </div>
+        <div class="edu-card fade-in stagger-4">
+          <div class="edu-top">
+            <span class="edu-institution">Kendriya Vidyalaya</span>
+            <span class="edu-location">Mangalore, KA, India</span>
+          </div>
+          <div class="edu-degree">Class 10 | Science, Mathematics, Social Science, English, Sanskrit — 95.4%</div>
+          <div class="edu-date">March 2018</div>
+        </div> -->
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section class="section" style="background: var(--bg-warm); padding: 60px 0;">
+    <div class="container">
+      <div class="section-header fade-in">
+        <div class="section-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>
+        </div>
+        <h2 class="section-title">Experience</h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="timeline">
+        <div class="timeline-card fade-in">
+          <div class="timeline-header">
+            <span class="timeline-title">Department of English, University of Delhi</span>
+            <span class="timeline-badge">March 2021 – Nov 2021</span>
+          </div>
+          <div class="timeline-sub">VCIS Intern · Delhi, India</div>
+          <ul class="timeline-bullets">
+            <li>Digitized and streamlined departmental records using <span class="timeline-highlight">advanced Excel techniques</span>, ensuring accuracy and efficient data management.</li>
+            <li>Coordinated and executed a large-scale academic event in collaboration with <span class="timeline-highlight">Oxford University Press</span>, managing logistics and communication with multiple stakeholders.</li>
+            <li>Supported administrative processes related to Ph.D. and Master's admissions, maintaining documentation and facilitating smooth departmental operations.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header fade-in">
+        <div class="section-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+        </div>
+        <h2 class="section-title">Research Projects</h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="timeline">
+        <div class="timeline-card fade-in stagger-1">
+          <div class="timeline-header">
+            <span class="timeline-title">'Shifting Landscapes of Healing: Health Cosmology, Ethnomedicine and Experiential Health in Bhotia Highlands'</span>
+            <span class="timeline-badge">March 2025</span>
+          </div>
+          <div class="timeline-sub">Researcher · Munsiyari, Uttarakhand, India</div>
+          <ul class="timeline-bullets">
+            <li>Led a <span class="timeline-highlight">mixed-method study</span> examining how cultural beliefs and healthcare systems shape treatment choices and health outcomes in Himalayan communities through ethnographic study and quantitative analysis.</li>
+            <li>Conducted case studies, in-depth interviews, life history and focus group discussions to understand experiential health perspectives and assess access and utilization of healthcare services and local healing practices.</li>
+            <li>Generated actionable insights on <span class="timeline-highlight">medical pluralism</span>, local health governance, and cultural determinants of care, contributing to evidence-based approaches for inclusive health policy.</li>
+          </ul>
+        </div>
+        <div class="timeline-card fade-in stagger-2">
+          <div class="timeline-header">
+            <span class="timeline-title">'An Anthropological Account on Kamand Valley'</span>
+            <span class="timeline-badge">February 2023</span>
+          </div>
+          <div class="timeline-sub">Researcher · Mandi, Himachal Pradesh, India</div>
+          <ul class="timeline-bullets">
+            <li>Conducted <span class="timeline-highlight">mixed-method field research</span> to assess social organization, caste, economy, and health systems in rural Himalayan communities.</li>
+            <li>Collected and analyzed quantitative demographic and biological data alongside qualitative ethnographic insights to develop a comprehensive community profile.</li>
+            <li>Identified key developmental challenges and cultural determinants influencing education, livelihood, and healthcare access, and suggested evidence-based rural development strategies.</li>
+          </ul>
+        </div>
+        <div class="timeline-card fade-in stagger-3">
+          <div class="timeline-header">
+            <span class="timeline-title">Ethnographic Film — 'Hanging by a Thread'</span>
+            <span class="timeline-badge">Mar 2022 – Sep 2022</span>
+          </div>
+          <div class="timeline-sub">Visual Anthropologist · Coimbatore, Tamil Nadu, India</div>
+          <ul class="timeline-bullets">
+            <li>Conceptualized and developed the research framework and visual narrative for an ethnographic film exploring local livelihoods and cultural practices.</li>
+            <li>Planned and managed logistics, ethical protocols, and rapport building with participants to ensure culturally sensitive data collection.</li>
+            <li>Conducted qualitative interviews and visual documentation, translating field insights into a coherent ethnographic story.</li>
+            <li>Edited and produced the final film using <span class="timeline-highlight">DaVinci Resolve</span>, integrating analytical depth with visual storytelling.</li>
+            <li>Selected and screened at the <span class="timeline-highlight">World Anthropology Congress IUAES 2023</span>.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LEADERSHIP -->
+  <section class="section" style="background: var(--bg-warm); padding: 60px 0;">
+    <div class="container">
+      <div class="section-header fade-in">
+        <div class="section-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <h2 class="section-title">Leadership &amp; Activities</h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="timeline">
+        <div class="timeline-card fade-in stagger-1">
+          <div class="timeline-header">
+            <span class="timeline-title">Gender Champion (A UGC Programme)</span>
+            <span class="timeline-badge">Apr 2024 – Mar 2025</span>
+          </div>
+          <div class="timeline-sub">Department of Anthropology, University of Delhi · Delhi, India</div>
+          <ul class="timeline-bullets">
+            <li>Led <span class="timeline-highlight">gender sensitization initiatives</span> through workshops, discussions, debates, competitions, and a departmental seminar promoting inclusivity and awareness.</li>
+            <li>Facilitated peer dialogues on workplace and classroom challenges, identifying root causes and proposing actionable solutions.</li>
+            <li>Collaborated with faculty and students to foster a safe, equitable, and gender-responsive academic environment.</li>
+          </ul>
+        </div>
+        <div class="timeline-card fade-in stagger-2">
+          <div class="timeline-header">
+            <span class="timeline-title">NCC (National Cadet Corps) — Junior Under Officer</span>
+            <span class="timeline-badge">Nov 2021 – May 2023</span>
+          </div>
+          <div class="timeline-sub">1DGBN, Hansraj College · Delhi, India</div>
+          <ul class="timeline-bullets">
+            <li><span class="timeline-highlight">B Certificate holder</span>.</li>
+            <li>Led and mentored <span class="timeline-highlight">200+ cadets</span> under 1DGBN, coordinating training and discipline activities at Hansraj College.</li>
+            <li>Organized annual recruitment drives and <span class="timeline-highlight">30+ institutional events</span>, fests, and competitions, fostering teamwork and leadership among cadets.</li>
+            <li>Served as Camp Leader at the NCC "B" Certificate camp, overseeing logistics, welfare, and performance coordination.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header fade-in">
+        <div class="section-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg>
+        </div>
+        <h2 class="section-title">Skills &amp; Interests</h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="skills-grid">
+        <div class="skill-card fade-in stagger-1">
+          <div class="skill-label">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+            Technical
+          </div>
+          <div class="skill-tags">
+            <span class="skill-tag">Mixed-Methods Research</span>
+            <span class="skill-tag">SPSS</span>
+            <span class="skill-tag">Advanced Excel</span>
+            <span class="skill-tag">Stakeholder Engagement</span>
+            <span class="skill-tag">Participant Observation</span>
+            <span class="skill-tag">Fieldwork</span>
+            <span class="skill-tag">Research Proposals</span>
+            <span class="skill-tag">Academic Writing</span>
+          </div>
+        </div>
+        <div class="skill-card fade-in stagger-2">
+          <div class="skill-label">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m2 12 20 0"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+            Languages
+          </div>
+          <div class="skill-tags">
+            <span class="skill-tag">English (C2)</span>
+            <span class="skill-tag">Tamil (C2)</span>
+            <span class="skill-tag">Hindi (C1)</span>
+            <span class="skill-tag">Telugu (B1)</span>
+            <span class="skill-tag">Malayalam (B1)</span>
+          </div>
+        </div>
+        <div class="skill-card fade-in stagger-3">
+          <div class="skill-label">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 1.98-3A2.5 2.5 0 0 1 9.5 2Z"/><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-1.98-3A2.5 2.5 0 0 0 14.5 2Z"/></svg>
+            Laboratory
+          </div>
+          <div class="skill-tags">
+            <span class="skill-tag">Anthropometry</span>
+            <span class="skill-tag">Craniometry</span>
+            <span class="skill-tag">Osteometry</span>
+            <span class="skill-tag">Archaeology</span>
+            <span class="skill-tag">Molecular Data Analysis</span>
+          </div>
+        </div>
+        <div class="skill-card fade-in stagger-4">
+          <div class="skill-label">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+            Interests
+          </div>
+          <div class="skill-tags">
+            <span class="skill-tag">Reading (Fiction)</span>
+            <span class="skill-tag">Videography</span>
+            <span class="skill-tag">Ethnographic Filmmaking</span>
+            <span class="skill-tag">Visual Storytelling</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-name">S Bala Prasanna</div>
+      <div class="footer-links">
+        <a onclick="navigate('home')" style="cursor:pointer">Home</a>
+        <a onclick="navigate('blog')" style="cursor:pointer">Blog</a>
+        <a onclick="navigate('about')" style="cursor:pointer">About</a>
+        <a href="mailto:balaprasanna00@gmail.com">Email</a>
+      </div>
+      <div class="footer-copy">&copy; 2025 S Bala Prasanna. All rights reserved.</div>
+    </div>
+  </footer>
+</div>
+
+<!-- ==================== BLOG PAGE ==================== -->
+<div class="page" id="page-blog">
+  <div class="blog-hero">
+    <div class="container">
+      <h1 class="fade-in">The Field Notes</h1>
+      <p class="fade-in stagger-1">Reflections on anthropology, fieldwork, culture, and the human experience.</p>
+    </div>
+  </div>
+  <div class="container">
+    <div class="blog-grid">
+      <div class="blog-card fade-in stagger-1">
+        <div class="blog-card-img">
+          <span class="blog-tag">Fieldwork</span>
+          <div class="blog-card-img-inner">&#x1D4D5;</div>
+        </div>
+        <div class="blog-card-body">
+          <div class="blog-card-date">Coming Soon</div>
+          <h3 class="blog-card-title">Healing in the Highlands: Reflections from Munsiyari</h3>
+          <p class="blog-card-excerpt">Notes from my ethnographic fieldwork in Uttarakhand's Bhotia communities — exploring how traditional healing coexists with modern medicine.</p>
+          <div class="blog-card-read">Read More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+        </div>
+      </div>
+      <div class="blog-card fade-in stagger-2">
+        <div class="blog-card-img">
+          <span class="blog-tag">Visual Anthropology</span>
+          <div class="blog-card-img-inner">&#x1D4D5;</div>
+        </div>
+        <div class="blog-card-body">
+          <div class="blog-card-date">Coming Soon</div>
+          <h3 class="blog-card-title">Behind the Lens: Making 'Hanging by a Thread'</h3>
+          <p class="blog-card-excerpt">The journey of creating an ethnographic film in Coimbatore — from conceptualization to screening at IUAES 2023.</p>
+          <div class="blog-card-read">Read More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+        </div>
+      </div>
+      <div class="blog-card fade-in stagger-3">
+        <div class="blog-card-img">
+          <span class="blog-tag">Research</span>
+          <div class="blog-card-img-inner">&#x1D4D5;</div>
+        </div>
+        <div class="blog-card-body">
+          <div class="blog-card-date">Coming Soon</div>
+          <h3 class="blog-card-title">Kamand Valley: Caste, Economy, and Health in the Himalayas</h3>
+          <p class="blog-card-excerpt">An overview of my field study in Mandi, Himachal Pradesh — understanding rural social structures through an anthropological lens.</p>
+          <div class="blog-card-read">Read More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+        </div>
+      </div>
+      <div class="blog-card fade-in stagger-4">
+        <div class="blog-card-img">
+          <span class="blog-tag">Reflections</span>
+          <div class="blog-card-img-inner">&#x1D4D5;</div>
+        </div>
+        <div class="blog-card-body">
+          <div class="blog-card-date">Coming Soon</div>
+          <h3 class="blog-card-title">What NCC Taught Me About Leadership</h3>
+          <p class="blog-card-excerpt">From cadet to Junior Under Officer — lessons in discipline, teamwork, and leading with purpose.</p>
+          <div class="blog-card-read">Read More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+        </div>
+      </div>
+      <div class="blog-card fade-in stagger-5">
+        <div class="blog-card-img">
+          <span class="blog-tag">Academia</span>
+          <div class="blog-card-img-inner">&#x1D4D5;</div>
+        </div>
+        <div class="blog-card-body">
+          <div class="blog-card-date">Coming Soon</div>
+          <h3 class="blog-card-title">Medical Pluralism: Bridging the Gap</h3>
+          <p class="blog-card-excerpt">Exploring how communities navigate between ethnomedical practices and institutional healthcare — and what policy can learn from it.</p>
+          <div class="blog-card-read">Read More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+        </div>
+      </div>
+      <div class="blog-card fade-in stagger-6">
+        <div class="blog-card-img">
+          <span class="blog-tag">Gender Studies</span>
+          <div class="blog-card-img-inner">&#x1D4D5;</div>
+        </div>
+        <div class="blog-card-body">
+          <div class="blog-card-date">Coming Soon</div>
+          <h3 class="blog-card-title">Being a Gender Champion at Delhi University</h3>
+          <p class="blog-card-excerpt">Reflections on leading sensitization workshops and fostering inclusive dialogues in academic spaces.</p>
+          <div class="blog-card-read">Read More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-name">S Bala Prasanna</div>
+      <div class="footer-links">
+        <a onclick="navigate('home')" style="cursor:pointer">Home</a>
+        <a onclick="navigate('blog')" style="cursor:pointer">Blog</a>
+        <a onclick="navigate('about')" style="cursor:pointer">About</a>
+        <a href="mailto:balaprasanna00@gmail.com">Email</a>
+      </div>
+      <div class="footer-copy">&copy; 2025 S Bala Prasanna. All rights reserved.</div>
+    </div>
+  </footer>
+</div>
+
+<!-- ==================== ABOUT PAGE ==================== -->
+<div class="page" id="page-about">
+  <section class="gallery-page">
+    <div class="container">
+      <h1 class="gallery-page-title fade-in">About Me</h1>
+      <p class="gallery-page-subtitle fade-in stagger-1">Moments from the field, the department, and beyond.</p>
+
+      <div class="gallery-accordion fade-in stagger-2">
+
+        <!-- FIELD WORK -->
+        <div class="gallery-section active" data-gallery="fieldwork">
+          <div class="gallery-section-header" onclick="toggleGallery(this)">
+            <span class="gallery-section-title">Field Work <span class="gallery-count">6 photos</span></span>
+            <svg class="gallery-section-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+          </div>
+          <div class="gallery-section-content">
+            <div class="gallery-grid">
+              <div class="gallery-item" onclick="openLightbox(this)"><img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&h=450&fit=crop" alt="Field work 1"></div>
+              <div class="gallery-item" onclick="openLightbox(this)"><img src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=600&h=450&fit=crop" alt="Field work 2"></div>
+              <div class="gallery-item" onclick="openLightbox(this)"><img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=600&h=450&fit=crop" alt="Field work 3"></div>
+              <div class="gallery-item" onclick="openLightbox(this)"><img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=600&h=450&fit=crop" alt="Field work 4"></div>
+              <div class="gallery-item" onclick="openLightbox(this)"><img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?w=600&h=450&fit=crop" alt="Field work 5"></div>
+              <div class="gallery-item" onclick="openLightbox(this)"><img src="https://images.unsplash.com/photo-1486870591958-9b9d0d1dda99?w=600&h=450&fit=crop" alt="Field work 6"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- DEPARTMENT -->
+        <div class="gallery-section" data-gallery="department">
+          <div class="gallery-section-header" onclick="toggleGallery(this)">
+            <span class="gallery-section-title">Department <span class="gallery-count">6 photos</span></span>
+            <svg class="gallery-section-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+          </div>
+          <div class="gallery-section-content">
+            <div class="gallery-grid">
+              <div class="gallery-item" onclick="openLightbox(this)"><img src="https://images.unsplash.com/photo-1523050854058-8df90110c7f1?w=600&h=450&fit=crop" alt="Department 1"></div>
+              <div class="gallery-item" onclick="openLightbox(this)"><img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=600&h=450&fit=crop" alt="Department 2"></div>
+              <div class="gallery-item" onclick="openLightbox(this)"><img src="https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?w=600&h=450&fit=crop" alt="Department 3"></div>
+              <div class="gallery-item" onclick="openLightbox(this)"><img src="https://images.unsplash.com/photo-1562774053-701939374585?w=600&h=450&fit=crop" alt="Department 4"></div>
+              <div class="gallery-item" onclick="openLightbox(this)"><img src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=600&h=450&fit=crop" alt="Department 5"></div>
+              <div class="gallery-item" onclick="openLightbox(this)"><img src="https://images.unsplash.com/photo-1607237138185-eedd9c632b0b?w=600&h=450&fit=crop" alt="Department 6"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- FRIENDS -->
+        <div class="gallery-section" data-gallery="friends">
+          <div class="gallery-section-header" onclick="toggleGallery(this)">
+            <span class="gallery-section-title">Friends <span class="gallery-count">6 photos</span></span>
+            <svg class="gallery-section-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+          </div>
+          <div class="gallery-section-content">
+            <div class="gallery-grid">
+              <div class="gallery-item" onclick="openLightbox(this)"><img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=600&h=450&fit=crop" alt="Friends 1"></div>
+              <div class="gallery-item" onclick="openLightbox(this)"><img src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=600&h=450&fit=crop" alt="Friends 2"></div>
+              <div class="gallery-item" onclick="openLightbox(this)"><img src="https://images.unsplash.com/photo-1543807535-eceef0bc6599?w=600&h=450&fit=crop" alt="Friends 3"></div>
+              <div class="gallery-item" onclick="openLightbox(this)"><img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=600&h=450&fit=crop" alt="Friends 4"></div>
+              <div class="gallery-item" onclick="openLightbox(this)"><img src="https://images.unsplash.com/photo-1506869640319-fe1a24fd76cb?w=600&h=450&fit=crop" alt="Friends 5"></div>
+              <div class="gallery-item" onclick="openLightbox(this)"><img src="https://images.unsplash.com/photo-1516939884455-1445c8652f83?w=600&h=450&fit=crop" alt="Friends 6"></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Lightbox overlay -->
+  <div class="gallery-lightbox" id="galleryLightbox" onclick="closeLightbox()">
+    <button class="gallery-lightbox-close" onclick="closeLightbox()">&times;</button>
+    <img id="lightboxImg" src="" alt="Enlarged photo">
+  </div>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-name">S Bala Prasanna</div>
+      <div class="footer-links">
+        <a onclick="navigate('home')" style="cursor:pointer">Home</a>
+        <a onclick="navigate('blog')" style="cursor:pointer">Blog</a>
+        <a onclick="navigate('about')" style="cursor:pointer">About</a>
+        <a href="mailto:balaprasanna00@gmail.com">Email</a>
+      </div>
+      <div class="footer-copy">&copy; 2025 S Bala Prasanna. All rights reserved.</div>
+    </div>
+  </footer>
+</div>
+
+<script>
+  // ===== NAVIGATION =====
+  function navigate(page) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.getElementById('page-' + page).classList.add('active');
+    document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+    document.querySelector('.nav-link[data-page="' + page + '"]').classList.add('active');
+    document.getElementById('navLinks').classList.remove('open');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    // Re-trigger animations
+    setTimeout(triggerAnimations, 100);
+  }
+
+  function toggleMenu() {
+    document.getElementById('navLinks').classList.toggle('open');
+  }
+
+  // ===== SCROLL NAV SHADOW =====
+  window.addEventListener('scroll', () => {
+    document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 20);
+  });
+
+  // ===== SCROLL ANIMATIONS =====
+  function triggerAnimations() {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.page.active .fade-in').forEach(el => {
+      el.classList.remove('visible');
+      observer.observe(el);
+    });
+  }
+
+  // ===== GALLERY ACCORDION =====
+  function toggleGallery(headerEl) {
+    const section = headerEl.parentElement;
+    const isActive = section.classList.contains('active');
+
+    // Close all sections
+    document.querySelectorAll('.gallery-section').forEach(s => {
+      s.classList.remove('active');
+    });
+
+    // Open clicked section if it wasn't already open
+    if (!isActive) {
+      section.classList.add('active');
+    }
+  }
+
+  // ===== LIGHTBOX =====
+  function openLightbox(itemEl) {
+    const img = itemEl.querySelector('img');
+    const lightbox = document.getElementById('galleryLightbox');
+    const lightboxImg = document.getElementById('lightboxImg');
+    lightboxImg.src = img.src.replace('w=600&h=450', 'w=1200&h=900');
+    lightboxImg.alt = img.alt;
+    lightbox.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox() {
+    const lightbox = document.getElementById('galleryLightbox');
+    lightbox.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeLightbox();
+  });
+
+  // Initial load
+  document.addEventListener('DOMContentLoaded', () => {
+    triggerAnimations();
+  });
+</script>
+</body>
+</html>
